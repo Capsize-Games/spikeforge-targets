@@ -1,0 +1,79 @@
+# PEP 621 packaging authority for the spikeforge-targets distribution.
+#
+# The distribution owns the ``spikeforge_targets`` import root, which holds the
+# deployment targets, event-driven energy accounting, and the backend execution
+# adapters. It depends on core, but core never depends on it. The volatile
+# backend SDKs (norse, lava) are optional extras here, which is why core no
+# longer advertises them.
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spikeforge-targets"
+version = "0.1.0"
+description = "Deployment targets, event-driven energy accounting, and backend execution for spikeforge."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Capsize Games", email = "contact@capsizegames.com" },
+]
+maintainers = [
+    { name = "Capsize Games", email = "contact@capsizegames.com" },
+]
+keywords = [
+    "spiking neural networks",
+    "deployment",
+    "neuromorphic",
+    "lava",
+    "norse",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "spikeforge~=0.3.0",
+    "numpy>=1.26",
+    "torch>=2.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.0.280",
+]
+norse = [
+    "norse",
+]
+lava = [
+    "lava-nc",
+]
+
+[project.scripts]
+spikeforge-energy = "spikeforge_targets.energy.cli:main"
+spikeforge-targets = "spikeforge_targets.cli.target_cli:main"
+
+[project.urls]
+Homepage = "https://github.com/capsize-games/spikeforge-targets"
+Repository = "https://github.com/capsize-games/spikeforge-targets"
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["spikeforge_targets*"]
+exclude = ["tests*"]
