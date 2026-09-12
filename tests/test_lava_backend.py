@@ -7,12 +7,12 @@ from typing import Any, Dict
 import numpy as np
 import pytest
 import torch
-
 from spikeforge.nir_bridge import api as nir_api
 from spikeforge.nir_bridge.exporter import to_nir
 from spikeforge.topology.builder import build_module
 from spikeforge.topology.spec import chain
 from spikeforge.topology.stage import Stage
+
 from spikeforge_targets.backends import api, compile_run
 from spikeforge_targets.backends.lava_backend import LavaBackend
 

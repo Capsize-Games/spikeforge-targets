@@ -26,6 +26,7 @@ from spikeforge.nir_bridge.errors import (
     UnknownNodeKindError,
     UnsupportedNodeError,
 )
+
 from spikeforge_targets.report import deployment_report
 from spikeforge_targets.summary import target_summaries
 

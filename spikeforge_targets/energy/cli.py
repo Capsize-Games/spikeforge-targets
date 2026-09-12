@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import torch
-
 from spikeforge.simulator.runner import run
+
 from spikeforge_targets.energy.accounting import (
     BATCH,
     SEED,

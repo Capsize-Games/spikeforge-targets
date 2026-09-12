@@ -9,12 +9,12 @@ operation count drops with input sparsity. It is training-free by design.
 from typing import Optional, Tuple
 
 import torch
-
 from spikeforge.simulator.frames import normalise_frame
 from spikeforge.simulator.module_spec import spec_of
 from spikeforge.simulator.state import initial_state
 from spikeforge.simulator.trajectory import Trajectory
 from spikeforge.topology.stage_module import StageModule
+
 from spikeforge_targets.event_runtime.counters import SynapticCounter
 from spikeforge_targets.event_runtime.sparse_result import SparseResult
 from spikeforge_targets.event_runtime.sparse_step import SparseStageModule

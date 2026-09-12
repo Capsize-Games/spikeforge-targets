@@ -5,6 +5,7 @@ from typing import Any, Dict
 
 from spikeforge.benchmark.config import BenchmarkConfig
 from spikeforge.benchmark.harness import run_benchmark
+
 from spikeforge_targets.energy import account, measure_topology
 from spikeforge_targets.energy.report import EnergyReport
 from spikeforge_targets.event_runtime.sparse_result import SparseResult

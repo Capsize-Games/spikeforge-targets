@@ -3,6 +3,7 @@
 from typing import Any, Dict, List, Mapping, Optional
 
 from spikeforge.topology.spec import TopologySpec
+
 from spikeforge_targets.capability_matrix import classify
 from spikeforge_targets.matrix_result import CapabilityMatrix
 from spikeforge_targets.registry import get_target

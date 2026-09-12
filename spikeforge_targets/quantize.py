@@ -13,10 +13,10 @@ from dataclasses import replace
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
-
 from spikeforge.nir_bridge import api
 from spikeforge.nir_bridge.exporter import to_nir
 from spikeforge.topology.spec import TopologySpec
+
 from spikeforge_targets.quantize_report import QuantizationReport
 from spikeforge_targets.quantize_result import QuantizationResult
 from spikeforge_targets.quantize_schemes import SCHEMES, Scheme

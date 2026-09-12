@@ -2,13 +2,13 @@
 
 import pytest
 import torch
-
 from spikeforge.cli import verify
 from spikeforge.data import sequence_source
 from spikeforge.nir_bridge import to_nir
 from spikeforge.nir_bridge.errors import UnsupportedStageError
 from spikeforge.simulator.runner import run
 from spikeforge.topology import registry
+
 from spikeforge_targets.rewrite import rewrite
 
 pytest.importorskip("nir")
