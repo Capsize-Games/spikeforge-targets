@@ -2,11 +2,11 @@
 
 import pytest
 import torch
-
 from spikeforge.topology.builder import build_module
 from spikeforge.topology.registry import build_topology
 from spikeforge.topology.spec import chain
 from spikeforge.topology.stage import Stage
+
 from spikeforge_targets.event_runtime import (
     SparseResult,
     UnsupportedKindError,

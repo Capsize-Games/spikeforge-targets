@@ -4,10 +4,10 @@ import json
 
 import pytest
 import torch
-
 from spikeforge.nir_bridge.exporter import to_nir
 from spikeforge.topology import presets
 from spikeforge.topology.builder import build_module
+
 from spikeforge_targets import probe
 from spikeforge_targets.report import deployment_report
 

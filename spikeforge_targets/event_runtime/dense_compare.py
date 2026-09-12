@@ -9,6 +9,7 @@ the whole event-driven story in one JSON-able block.
 from typing import Any, Dict
 
 from spikeforge.simulator.trajectory import Trajectory
+
 from spikeforge_targets.event_runtime.sparse_result import SparseResult
 
 #: Default absolute tolerance for sparse-vs-dense readout parity.

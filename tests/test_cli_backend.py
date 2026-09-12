@@ -3,8 +3,8 @@
 import json
 
 import pytest
-
 from spikeforge.cli import verify
+
 from spikeforge_targets.cli import target_cli
 
 pytest.importorskip("nir")

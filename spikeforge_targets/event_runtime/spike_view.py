@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from typing import Tuple
 
 import torch
-
 from spikeforge.simulator import input_shape
 from spikeforge.topology.spec import TopologySpec
 

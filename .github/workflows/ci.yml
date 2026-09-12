@@ -32,15 +32,42 @@ jobs:
       - name: Install torch CPU wheels
         run: |
           python -m pip install --upgrade pip
-          pip install torch --index-url ${{ env.TORCH_INDEX_URL }}
+          # torchvision is installed here too, from the same CPU index, and
+          # pinned to land alongside torch. `spikeforge` (installed next)
+          # depends on `torchvision>=0.20` with no index constraint of its
+          # own; if we let that resolve it later it silently pulls a CUDA
+          # build from PyPI that is ABI-incompatible with the CPU torch
+          # already on disk, and every import of spikeforge_targets blows up
+          # with "operator torchvision::nms does not exist" at collection
+          # time. Installing the matching CPU build up front makes the later
+          # resolution a no-op.
+          pip install torch torchvision --index-url ${{ env.TORCH_INDEX_URL }}
 
       - name: Install the core dependency
+        env:
+          # Read-only deploy key on Capsize-Games/spikeforge, added
+          # specifically for this fallback. It grants no access beyond that
+          # one repository.
+          SPIKEFORGE_DEPLOY_KEY: ${{ secrets.SPIKEFORGE_DEPLOY_KEY }}
         run: |
           # Prefer the published core distribution. `spikeforge` 0.3.0 is not
-          # on PyPI yet, so fall back to a git checkout of `main` as a stopgap
-          # until 0.3.0 is published.
-          pip install "spikeforge~=0.3.0" \
-            || pip install "git+https://github.com/capsize-games/spikeforge.git@main"
+          # on PyPI yet, so fall back to a checkout of `main` as a stopgap
+          # until 0.3.0 is published. Capsize-Games/spikeforge is private
+          # pre-launch, so the fallback can't be an anonymous HTTPS clone (it
+          # gets rejected before Git even sends credentials); it goes over
+          # SSH instead, authenticated with a repo-scoped, read-only deploy
+          # key. The package lives at `packages/spikeforge` inside that repo,
+          # not at its root, hence `subdirectory=`.
+          if pip install "spikeforge~=0.3.0"; then
+            echo "installed spikeforge from PyPI"
+          else
+            install -d -m 700 "$HOME/.ssh"
+            printf '%s\n' "$SPIKEFORGE_DEPLOY_KEY" > "$HOME/.ssh/spikeforge_deploy_key"
+            chmod 600 "$HOME/.ssh/spikeforge_deploy_key"
+            ssh-keyscan -t ed25519 github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null
+            export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/spikeforge_deploy_key -o IdentitiesOnly=yes"
+            pip install "git+ssh://git@github.com/Capsize-Games/spikeforge.git@main#subdirectory=packages/spikeforge"
+          fi
 
       - name: Install spikeforge-targets
         run: pip install -e ".[dev]"

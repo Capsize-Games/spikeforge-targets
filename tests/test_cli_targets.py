@@ -5,10 +5,10 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-
 from spikeforge.cli import verify
 from spikeforge.nir_bridge import save_graph, to_nir
 from spikeforge.topology.registry import build_topology
+
 from spikeforge_targets import registry
 from spikeforge_targets.cli import target_cli
 

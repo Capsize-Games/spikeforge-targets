@@ -5,11 +5,11 @@ from typing import Tuple
 
 import pytest
 import torch
-
 from spikeforge.simulator.runner import run
 from spikeforge.topology.registry import build_topology
 from spikeforge.topology.spec import TopologySpec
 from spikeforge.topology.stage_module import StageModule
+
 from spikeforge_targets.event_runtime import (
     DEFAULT_TOLERANCE,
     compare,

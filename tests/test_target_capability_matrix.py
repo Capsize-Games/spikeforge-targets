@@ -3,8 +3,8 @@
 import json
 
 import pytest
-
 from spikeforge.topology import presets
+
 from spikeforge_targets import (
     EMITTED_PRIMITIVES,
     capability_matrix,

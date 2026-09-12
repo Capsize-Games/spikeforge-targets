@@ -5,7 +5,6 @@ from typing import Any, Dict, List, Tuple
 
 import pytest
 import torch
-
 from spikeforge.nir_bridge import array_codec
 from spikeforge.nir_bridge.errors import (
     GraphNotFoundError,
@@ -24,6 +23,7 @@ from spikeforge.nir_bridge.serialization import (
 from spikeforge.topology import presets
 from spikeforge.topology.builder import build_module
 from spikeforge.topology.spec import TopologySpec
+
 from spikeforge_targets.primitives import EMITTED_PRIMITIVES
 
 pytest.importorskip("nir")

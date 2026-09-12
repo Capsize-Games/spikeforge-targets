@@ -11,9 +11,9 @@ from typing import Optional, Tuple
 
 import torch
 import torch.nn as nn
-
 from spikeforge.neurons.contract import NeuronState
 from spikeforge.topology.stage_module import StageModule
+
 from spikeforge_targets.event_runtime import ops
 from spikeforge_targets.event_runtime.counters import SynapticCounter
 from spikeforge_targets.event_runtime.errors import UnsupportedKindError

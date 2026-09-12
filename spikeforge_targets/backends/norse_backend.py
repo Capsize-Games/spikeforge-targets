@@ -17,8 +17,8 @@ from math import exp
 from typing import Any, Dict, List, Tuple
 
 import torch
-
 from spikeforge.nir_bridge.ops_registry import OPS
+
 from spikeforge_targets.backends import api, lowering
 from spikeforge_targets.backends.errors import BackendUnavailableError
 from spikeforge_targets.backends.result import (

@@ -6,10 +6,10 @@ from typing import Any, Dict, List, Tuple
 import numpy as np
 import pytest
 import torch
-
 from spikeforge.nir_bridge import api
 from spikeforge.nir_bridge.exporter import to_nir
 from spikeforge.topology import presets
+
 from spikeforge_targets.rewrite import rewrite
 from spikeforge_targets.rewrite_drift import rewrite_drift
 from spikeforge_targets.target_spec import TargetSpec

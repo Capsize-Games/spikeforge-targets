@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 from spikeforge.nir_bridge import api
 from spikeforge.nir_bridge.exporter import to_nir
 from spikeforge.topology.spec import TopologySpec
+
 from spikeforge_targets.registry import get_target
 from spikeforge_targets.rewrite_drift import rewrite_drift
 from spikeforge_targets.rewrite_report import RewriteReport
