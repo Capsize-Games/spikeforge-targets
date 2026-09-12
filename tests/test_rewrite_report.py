@@ -4,10 +4,10 @@ import json
 
 import numpy as np
 import pytest
-
 from spikeforge.nir_bridge import api
 from spikeforge.nir_bridge.exporter import to_nir
 from spikeforge.topology import presets
+
 from spikeforge_targets.rewrite import rewrite
 from spikeforge_targets.rewrite_report import RewriteReport
 

@@ -10,10 +10,10 @@ an honest report. A target with a bundled cost table yields an estimate
 from typing import Any, Dict, Mapping, Optional, Tuple
 
 import torch
-
 from spikeforge.topology.registry import build_topology
 from spikeforge.topology.spec import TopologySpec
 from spikeforge.topology.stage_module import StageModule
+
 from spikeforge_targets.energy import probe, target_costs
 from spikeforge_targets.energy.report import EnergyReport
 from spikeforge_targets.event_runtime.sparse_result import SparseResult

@@ -22,8 +22,8 @@ from math import log
 from typing import Any, Callable, Dict, Optional, Tuple
 
 import numpy as np
-
 from spikeforge.nir_bridge.require import require_node
+
 from spikeforge_targets.rewrite_outcome import RewriteOutcome
 
 #: Leak fraction used by the ``IF`` -> ``LIF`` rule. It is a power of two so

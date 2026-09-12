@@ -8,6 +8,7 @@ same compile/run interface as the SDK-backed targets.
 from typing import Any
 
 from spikeforge.nir_bridge.interpreter import NirInterpreter
+
 from spikeforge_targets.backends.result import (
     STATUS_OK,
     BackendResult,

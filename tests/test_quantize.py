@@ -5,11 +5,11 @@ import json
 import numpy as np
 import pytest
 import torch
-
 from spikeforge.nir_bridge import api
 from spikeforge.nir_bridge.exporter import to_nir
 from spikeforge.topology import presets
 from spikeforge.topology.builder import build_module
+
 from spikeforge_targets.quantize import NO_QUANTIZATION, quantize
 from spikeforge_targets.registry import get_target
 from spikeforge_targets.report import deployment_report
