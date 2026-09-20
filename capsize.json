@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Capsize-Games/capsize-ci/1a50d06c20022f9bbc44bad002add302e1dae646/schema/capsize-1.json",
+  "schema_version": 1,
+  "standards": "1.x",
+  "name": "spikeforge-targets",
+  "type": "library",
+  "languages": ["python"],
+  "framework": null,
+  "databases": [],
+  "runtimes": {"python": ">=3.10"},
+  "entrypoints": {
+    "python": "spikeforge_targets",
+    "targets-cli": "spikeforge_targets/cli/target_cli.py",
+    "energy-cli": "spikeforge_targets/energy/cli.py"
+  },
+  "task_runner": "just",
+  "commands": {
+    "setup": "setup",
+    "build": "build",
+    "test": "test",
+    "lint": "lint",
+    "format": "format",
+    "typecheck": null,
+    "run": "run",
+    "clean": null,
+    "docs": "docs",
+    "ci": "ci"
+  },
+  "dependencies": {
+    "python": "pyproject.toml",
+    "core": "pyproject.toml",
+    "norse": "pyproject.toml",
+    "lava": "pyproject.toml"
+  },
+  "instructions": {
+    "canonical": "AGENTS.md",
+    "rules": ["capsize/base", "capsize/native"]
+  },
+  "owner": "Capsize-Games",
+  "license": "BSD-3-Clause"
+}
