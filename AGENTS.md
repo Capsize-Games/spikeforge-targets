@@ -7,10 +7,9 @@ targets to `spikeforge` core; the core package must not depend on this package.
 
 The local task contract is `python -m compileall -q spikeforge_targets` for the
 build check, `ruff check .` for lint, and `pytest` for tests. Install the
-development extra with `pip install -e ".[dev]"` after installing the private
-`spikeforge` core dependency as described in `README.md`. CI uses a
-repository-scoped local runner and a read-only deploy key for that dependency;
-never replace it with a broader credential or commit credential material.
+development extra with `pip install -e ".[dev]"` after installing the public
+`spikeforge` core dependency as described in `README.md`. CI runs on GitHub-hosted Ubuntu workers. The core dependency is public and
+its fallback checkout uses anonymous HTTPS; no deploy key is required.
 
 Norse and Lava are optional backend integrations. Tests that require those
 extras must keep their skip/availability behavior explicit; do not claim a

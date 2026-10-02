@@ -16,7 +16,7 @@ env:
 
 jobs:
   test:
-    runs-on: [self-hosted, linux, x64, spikeforge-targets-ci]
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -50,30 +50,10 @@ jobs:
           pip install torch torchvision --index-url ${{ env.TORCH_INDEX_URL }}
 
       - name: Install the core dependency
-        env:
-          # Read-only deploy key on Capsize-Games/spikeforge, added
-          # specifically for this fallback. It grants no access beyond that
-          # one repository.
-          SPIKEFORGE_DEPLOY_KEY: ${{ secrets.SPIKEFORGE_DEPLOY_KEY }}
         run: |
-          # Prefer the published core distribution. `spikeforge` 0.3.0 is not
-          # on PyPI yet, so fall back to a checkout of `main` as a stopgap
-          # until 0.3.0 is published. Capsize-Games/spikeforge is private
-          # pre-launch, so the fallback can't be an anonymous HTTPS clone (it
-          # gets rejected before Git even sends credentials); it goes over
-          # SSH instead, authenticated with a repo-scoped, read-only deploy
-          # key. The package lives at `packages/spikeforge` inside that repo,
-          # not at its root, hence `subdirectory=`.
-          if pip install "spikeforge~=0.3.0"; then
-            echo "installed spikeforge from PyPI"
-          else
-            install -d -m 700 "$HOME/.ssh"
-            printf '%s\n' "$SPIKEFORGE_DEPLOY_KEY" > "$HOME/.ssh/spikeforge_deploy_key"
-            chmod 600 "$HOME/.ssh/spikeforge_deploy_key"
-            ssh-keyscan -t ed25519 github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null
-            export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/spikeforge_deploy_key -o IdentitiesOnly=yes"
-            pip install "git+ssh://git@github.com/Capsize-Games/spikeforge.git@main#subdirectory=packages/spikeforge"
-          fi
+          # The core repository is public; the fallback needs no credentials.
+          pip install "spikeforge~=0.3.0" \
+            || pip install "git+https://github.com/Capsize-Games/spikeforge.git@main#subdirectory=packages/spikeforge"
 
       - name: Install spikeforge-targets
         run: pip install -e ".[dev]"
