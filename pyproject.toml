@@ -77,3 +77,6 @@ zip-safe = false
 where = ["."]
 include = ["spikeforge_targets*"]
 exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+"spikeforge_targets.energy" = ["costs/*.json"]
