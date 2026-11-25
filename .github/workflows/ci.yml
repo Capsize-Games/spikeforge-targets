@@ -52,7 +52,8 @@ jobs:
       - name: Install the core dependency
         run: |
           # The core repository is public; the fallback needs no credentials.
-          pip install "spikeforge~=0.3.0" \
+          # Pin tracks the family matrix (compatibility.json) core release.
+          pip install "spikeforge~=0.6.3" \
             || pip install "git+https://github.com/Capsize-Games/spikeforge.git@main#subdirectory=packages/spikeforge"
 
       - name: Install spikeforge-targets

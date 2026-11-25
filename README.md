@@ -33,6 +33,21 @@ pip install "spikeforge-targets[norse]"
 pip install "spikeforge-targets[lava]"
 ```
 
+## Release provenance and family compatibility
+
+PyPI `spikeforge-targets` publishes from the monorepo
+[Capsize-Games/spikeforge](https://github.com/Capsize-Games/spikeforge)
+(`packages/spikeforge-targets`), not from this standalone mirror. The
+monorepo `release.yml` publishes `<distribution>-v<version>` tags through a
+per-distribution trusted publisher and refuses the tag unless the tag,
+`pyproject.toml`, and `compatibility.json` agree and the core pin is exactly
+`spikeforge~=<matrix core>`. This checkout tracks that matrix: the core pin
+here must stay on the matrix core line (currently `spikeforge~=0.6.3`; see
+`docs/release-policy.md` and `docs/fleet-audit.md`). Family owner, supported
+Python (`>=3.10`, CI `3.10–3.13` with CPU torch wheels), `torch>=2.5`,
+Ruff/pytest floors, and downstream notes (including `999`) live in
+[`docs/release-policy.md`](docs/release-policy.md).
+
 ## Development
 
 ```bash

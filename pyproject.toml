@@ -44,7 +44,9 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 dependencies = [
-    "spikeforge~=0.3.0",
+    # Core pin tracks the family matrix in Capsize-Games/spikeforge
+    # compatibility.json (latest row at time of writing: core 0.6.3).
+    "spikeforge~=0.6.3",
     "numpy>=1.26",
     "torch>=2.5",
 ]
